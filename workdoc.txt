@@ -1,0 +1,104 @@
+项目文档
+
+//汤本项目
+原开发参考了这里代码：https://panjiachen.github.io/vue-element-admin-site/zh/feature/component/pagination.html#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F
+
+//V计划项目
+工作流程：
+1. 开发环境： E:\verzenios\src\Config.ts,  public static readonly DEBUG = true
+2. 发版前：
+    1. E:\verzenios\src\Config.ts,  更改public static readonly DEBUG = true 为false 
+    2.执行命令：egret publish 
+3. 上线前： 
+    1. E:\verzenios\src\Config.ts,  更改public static readonly DEBUG = true 为false 
+    2. template\web\index.html :     new VConsole()   这条注释掉
+    3. pkItem.ts: teamId 
+    3.执行命令：egret publish 
+    4.  bin-release 找到最新版，打包下给后端
+
+4.0918 上线第一版
+
+
+
+//老项目
+resouce/band/config.json  host/host1 
+prd环境：去q
+qa环境: 
+
+
+
+
+要解决的：
+给模拟器配置wechat环境
+
+
+
+添加的新页面：
+
+
+日程管理2  :   放一起
+    17th,
+薪资管理2
+系统管理3
+
+
+//paydata 
+1.津贴:
+日期，客户名称，工作内容，出差津补贴
+2.夜班：
+日期，客户名称，工作内容，夜班补贴
+3.平时：
+日期，客户名称，工作内容，正常作业金额
+4.加班：
+日期，客户名称，工作内容，上班时间，下班时间，加班补贴
+5.双休日：
+日期，客户名称，工作内容，双休日补贴
+6.节假日：
+日期，客户名称，工作内容，节假日补贴
+7.移动内：
+日期，客户名称，工作内容，移动补贴
+8.移动外：
+日期，客户名称，工作内容，移动补贴
+9.住宿费：
+日期，酒店名，费用
+10.交通费：
+日期，出发地，目的地，费用
+
+
+后面了解
+数据库
+node
+
+
+
+1。添加日程 操作后面不回列项
+2.薪资设置 去掉
+3.节假日暂不用
+
+
+处理兼容 将px转为%
+周一早页面完工。出差、日程、薪资、etc。 25号前都结束
+
+
+移动内、移动外、平时、加班、双休、节假日: number类型
+长短为选择项
+看接口类型说明
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
