@@ -1,0 +1,23 @@
+统计写过的egret类： 
+
+1. DisplayObjectContainer
+    addChild
+
+2. Shape       (创建简单形状)
+    graphics   （访问各种矢量绘图方法）
+
+3. Graphics 
+
+4. Event        (作为创建事件实例的基类)
+
+5. TouchEvent
+
+6. TextField    (文本渲染, 可能会有渲染差异如果开发者希望所有平台完全无差异，请使用BitmapText)
+
+7. ImageLoader  (加载图像（JPG、PNG 或 GIF）文件)
+
+8. Texture      (对不同平台不同的图片资源的封装在HTML5中???)
+
+9.Bitmap       (显示位图图片的显示对象)
+
+

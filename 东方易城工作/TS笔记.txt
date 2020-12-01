@@ -1,0 +1,342 @@
+/**
+ * Typescript 
+ */
+1.JS的超集, 微软开发，面向对象
+  现有的 JavaScript 代码可与 TypeScript 一起工作无需任何修改
+
+
+2.安装
+// 安装失败的话请以管理员身份运行，此处是sudo命令是mac上管理员权限
+sudo npm install typescript -g
+
+
+
+3.其他命令
+版本: tsc -v 
+转化为JS: tsc test.ts,
+执行JS: node xxx.js,
+同时编译多个ts文件: tsc file1.ts file2.ts file3.ts,
+
+
+
+4.  TS 基础类型 9个
+string 
+boolean
+number
+null    （表示对象值缺失。）
+undefined 
+
+
+any       （任意类型）
+数组
+元组       （已知元素数量和类型的数组,  let x: [string, number];）
+enum       (枚举：定义数值集合, enum Color {Red, Green, Blue};)
+void 
+never    (是其它类型（包括 null 和 undefined）的子类型，代表从不会出现的值)
+
+
+
+例子： 
+ 1. 数组类型：
+// 在元素类型后面加上[]
+let arr: number[] = [1, 2];
+// 或者使用数组泛型
+let arr: Array<number> = [1, 2];
+
+ 2. enum 枚举
+enum Color {Red, Green, Blue};
+let c: Color = Color.Blue;
+console.log(c);    // 输出 2
+
+
+ 3. 元组
+  let x: [string, number];
+  x = ['Runoob', 1];    // 运行正常
+  x = [1, 'Runoob'];    // 报错
+  console.log(x[0]);    // 输出 Runoob
+
+
+
+
+
+7. ts元组
+元组中允许存储不同类型的元素，元组可以作为参数传递给函数。
+var mytuple = [10,"Runoob"]; // 创建元组
+
+
+
+
+
+9. TS接口
+接口是一系列抽象方法的声明，是一些方法特征的集合
+接口不能转换为 JavaScript。 它只是 TypeScript 的一部分。
+interface IPerson { 
+    firstName:string, 
+    lastName:string, 
+    sayHi: ()=>string 
+} 
+ 
+var customer:IPerson = { 
+    firstName:"Tom",
+    lastName:"Hanks", 
+    sayHi: ():string =>{return "Hi there"} 
+} 
+
+
+
+10. TS类  
+静态
+static num:number;
+static disp():void {console.log()}
+
+11. TS对象
+  鸭子类型（Duck Typing）？
+
+12. TS命名空间 ： 解决重名问题
+  namespace SomeNameSpaceName {  //export: 可以在外部调用
+   export interface ISomeInterfaceName {      }  
+   export class SomeClassName {      }  
+}
+
+13. TS模块  （设计理念是可以更换的组织代码。）
+格式：
+    // 文件名 : SomeInterface.ts 
+    export interface SomeInterface { 
+      // 代码部分
+    }
+使用它：
+  import someInterfaceRef = require("./SomeInterface");
+
+
+14. TS声明文件  (.d.ts 为后缀)
+语法格式： 
+declare module Module_Name {
+}
+
+TypeScript 引入声明文件语法格式:
+/// <reference path = " runoob.d.ts" />
+
+
+15. TS数组
+语法： 
+var sites:string[]; 
+sites = ["Google","Runoob","Taobao"]
+或
+var numlist:number[] = [2,4,6,8]
+
+
+16. TS MAP对象  （保存键值对，并且能够记住键的原始插入顺序）
+迭代(“更替”)Map （for...of）
+// 迭代 Map 中的 key
+for (let key of nameSiteMapping.keys()) {
+    console.log(key);                  
+}
+
+17. TS元组  (如果数组存储的元素数据类型不同，则需要使用元组。允许存储不同类型的元素，元组可以作为参数传递给函数)
+如：
+var mytuple = [10,"Runoob"];
+
+
+18. TS联合类型  (通过管道(|)将变量设置多种类型)
+如：
+var val:string|number 
+
+19.TS接口  (抽象方法的声明,需要由具体的类去实现,第三方就可以通过这组抽象方法调用，让具体的类执行具体的方法)
+允许接口继承多个接口
+注：接口不能转换为 JavaScript。 它只是 TypeScript 的一部分。
+interface IPerson {}
+例：
+interface IPerson { 
+    firstName:string, 
+    lastName:string, 
+    sayHi: ()=>string 
+} 
+ 
+var customer:IPerson = { 
+    firstName:"Tom",
+    lastName:"Hanks", 
+    sayHi: ():string =>{return "Hi there"} 
+} 
+ 
+console.log("Customer 对象 ") 
+console.log(customer.firstName) 
+console.log(customer.lastName) 
+console.log(customer.sayHi())  
+
+
+20. TS循环   
+for...in 
+还支持 for…of 、forEach、every 和 some 循环。
+while() {}
+do {}while()
+
+21. TS函数
+function greet():string { // string:返回值类型
+    return "Hello World" 
+} 
+
+可选参数和默认参数: 我们定义了参数，则我们必须传入这些参数，除非将这些参数设置为可选，可选参数使用问号标识 ？
+function buildName(firstName: string, lastName?: string) {}
+
+默认参数：  （参数 rate 设置了默认值为 0.50，调用该函数时如果未传入参数则使用该默认值）
+function calculate_discount(price:number,rate:number = 0.50) {}
+
+剩余参数：   (允许我们将一个不确定数量的参数作为一个数组传入)
+function buildName(firstName: string, ...restOfName: string[]) {}
+let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");
+
+匿名函数
+  1.匿名函数自调用
+  (function () { 
+    var x = "Hello!!";   
+    console.log(x)    
+  })()
+
+构造函数   (JavaScript 内置的构造函数 Function())
+var res = new Function ([arg1[, arg2[, ...argN]],] functionBody)
+如： 
+var myFunction = new Function("a", "b", "return a * b"); 
+var x = myFunction(4, 3); 
+console.log(x);
+
+递归函数   （在函数内调用函数本身）
+6*5*4*3*2*1   用这个好写
+
+
+Lambda 函数   （箭头函数）
+
+函数重载   (方法名字相同，而参数不同，返回类型可以相同也可以不同)
+  如果参数类型不同，则参数类型应设置为 any。
+  参数数量不同你可以将不同的参数设置为可选。
+
+
+22. TS Number对象
+对象属性
+  1. Number.MAX_VALUE
+  2. Number.MIN_VALUE
+  3. Number.NaN 
+  4. Number.NEGATIVE_INFINITY
+  5. Number.POSITIVE_INFINITY
+  6. Number.prototype   ( (使有能力向对象添加属性和方法。))
+  7. Number.constructor  (返回对创建此对象的 Number 函数的引用。)
+对象方法
+1. toExponential（）
+2. toFixed（）
+3. toLocaleString（）
+4. toPrecision（）
+5. toString（） 
+6. valueOf（）
+
+23. TS string (属性跟方法：https://www.runoob.com/typescript/ts-string.html)
+var txt = new String("string");
+或者更简单方式：
+var txt = "string";
+
+
+24. TS运算符    （https://www.runoob.com/typescript/ts-operators.html）
+算术运算符
+逻辑运算符
+关系运算符
+按位运算符
+赋值运算符
+三元/条件运算符
+字符串运算符
+类型运算符
+
+
+25. TS 变量声明
+  类型断言（Type Assertion）:允许变量从一种类型更改为另一种类型
+var str = '1' 
+var str2:number = <number> <any> str   //str、str2 是 string 类型
+
+
+
+26. 
+  1. tsc 常用编译参数  (https://www.runoob.com/typescript/ts-basic-syntax.html)
+  2. 分号是可选的
+  3. 支持两种类型的注释 //   /*多行注释*/
+  4. 面向对象   （对象和类）
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
