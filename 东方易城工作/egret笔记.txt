@@ -1,23 +1,252 @@
+项目中：
+1. weui为微信设计的ui库
+
+
+
+
+lib文件
+modules: egret...
+第三方库
+
+src 
+    component 
+    event 
+    model 
+    net 
+    scene 
+    util
+
+taltz:
+    resource/brand: host
+    resource/music 
+    template/runtime
+resource 
+    assets: .jpg
+    config: .json
+    eui_skins: .exml 
+    scripts: 项目构建和发布时需要用到的脚本文件
+    template: 项目模板文件
+    egretProperties.json
+    index.html 
+    manifest.json 
+    tsconfig.json: ts编译配置文件
+
+
+
+
+
+
+
+
+
+要解决的：
+语法点
+promise其它方法
+arguments.callee 
+!!
+egret生态运用
+每日更新github 
+对象所有公共属性api
+
+将要做的egret项目放到github上
+
+沙发
+app小王子  社区管理员 | 2020-9-9 09:56:01
+egret run -port 端口号8061
+
+
+
+
+删除使用 EventTarget.addEventListener() 方法添加的事件, 返回值undefined
+element.removeEventListener("mousedown", handleMouseDown, false);     // 失败
+
+
+定义对象：
+private hAlignTexts:{[align:string]:string} = {};
+
+代码规范：
+
+1.注释
+2.静态大写
+
+
+
+
+
+进度：
+
+
+demos: 
+
+调试功能   ???????index.html
+RES资源管理   ??????用其它实例
+粒子  ???? 错的
+骨骼动画   未应用，stop
+EUI基础控件
+EUI布局及高级显示
+脏矩形下载运行重置
+
+
+
+
+
+
+
+
+.once 全局？？
+
 统计写过的egret类： 
 
 1. DisplayObjectContainer
     addChild
 
 2. Shape       (创建简单形状)
-    graphics   （访问各种矢量绘图方法）
+ graphics   （访问各种矢量绘图方法）
 
 3. Graphics 
 
 4. Event        (作为创建事件实例的基类)
+    添加事件传有event
+    ??? event.target类型查询
+    evt.currentTarget
+    <egret.Shape>e.currentTarget
+    evt.stopImmediatePropagation()
 
 5. TouchEvent
+6. FocusEvent
+
 
 6. TextField    (文本渲染, 可能会有渲染差异如果开发者希望所有平台完全无差异，请使用BitmapText)
+7. ITextElement     (用于建立多种样式混合文本的基本结构)
+8. HorizontalAlign
+9. HtmlTextParser
+10. TextFieldType
+
+
+
 
 7. ImageLoader  (加载图像（JPG、PNG 或 GIF）文件)
 
-8. Texture      (对不同平台不同的图片资源的封装在HTML5中???)
+??? 8. Texture      (对不同平台不同的图片资源的封装在HTML5中)
 
-9.Bitmap       (显示位图图片的显示对象)
+9. Bitmap       (显示位图图片的显示对象)
+???将已加载完成的图像显示出来 imgloader -> Bitmap 
+
+10. BitmapData      (对象是一个包含像素数据的数组)
+
+11. egret.log   (全局函数， http://developer.egret.com/cn/apidoc/index/name/egret.globalFunction)
+
+12. mask 
+
+13. Timer       (计时器的接口)
+14. TimerEvent 
+        event.target前有类型定义<egret.Timer>event.target
+
+
+
+
+
+12. BitmapFillMode
+13. BlendMode
+
+14. Sprite       (基本显示列表构造块)
+
+15. EventDispatcher     （事件派发器类，负责进行事件的发送和侦听）
+
+????  16. IEventDispatcher    (接口定义用于添加或删除事件侦听器的方法，检查是否已注册特定类型的事件侦听器，并调度事件)
+
+17. HashObject      （Egret顶级对象。框架内所有对象的基类，为对象实例提供唯一的hashCode值。）
+
+18. HttpRequest         (以文本或二进制数据的形式从 URL 下载数据)
+
+18. HttpResponseType
+
+19. ExternalInterface   ("外部接口"， h5与native交互)
+
+20. Matrix      （一个转换矩阵）
+21. Point       (二维坐标系统中的某个位置)
+21. Rectangle   (按其位置（由它左上角的点 (x, y) 确定）以及宽度和高度定义的区域)
+
+
+22.localStorage   (全局)
+
+21.sound
+22.video
+
+23. ProgressEvent
+24. IOErrorEvent
+
+25. StageScaleMode
+
+26. DeviceOrientation
+
+27. Geolocation     (从设备的定位服务获取设备的当前位置)
+
+28. Motion      (从用户设备读取运动状态信息并派发 CHANGE 事件)
+
+29. Capabilities
+
+30. text: 
+    BitmapFont
+    BitmapText
+    HtmlTextParser
+    TextField
+
+31. lifecycle
+    ByteArray
+    callLater
+    getDefinitionByName
+    getOption
+    getQualifiedClassName
+    getQualifiedSuperclassName
+    getTimer
+    hasDefinition
+    is
+    NumberUtils
+    Timer
+    toColorString
+    XML
+    CustomFilter    （自定义滤镜，目前仅支持WebGL模式）
+
+32. Tween       (动画缓动类. 字面意思“补间动画”)
+
+32. MovieClip   (影片剪辑)
+33. MovieClipData
+33. MovieClipDataFactory
+34. MovieClipEvent
+
+
+35. assetsManager  (底层存储资源信息)
+RES相关都在这里
+
+
+
+
+36. 写好的LoadingUI 逻辑待看
+
+37. dragonBones   目前项目中未应用
+
+
+
+
+
+
+
+
+
+
+
+
+EUI部分
+
+UILayer: 容器
+Label 
+
+
+
+
+
+
+
 
 

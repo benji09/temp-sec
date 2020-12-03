@@ -89,6 +89,11 @@ var customer:IPerson = {
 static num:number;
 static disp():void {console.log()}
 
+类可以实现接口
+用关键字implements，并将 interest 字段作为类的属性使用。
+
+
+
 11. TS对象
   鸭子类型（Duck Typing）？
 
@@ -237,7 +242,12 @@ var txt = "string";
 算术运算符
 逻辑运算符
 关系运算符
-按位运算符
+按位运算符:   
+  >>  ： 转二进制，左移动，右位数， 高位丢弃，低位补0  5>>1 :2
+
+
+
+
 赋值运算符
 三元/条件运算符
 字符串运算符
@@ -257,6 +267,11 @@ var str2:number = <number> <any> str   //str、str2 是 string 类型
   3. 支持两种类型的注释 //   /*多行注释*/
   4. 面向对象   （对象和类）
   
+
+ES6 
+
+
+
 
 
 
