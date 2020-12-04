@@ -1,5 +1,45 @@
 项目中：
-1. weui为微信设计的ui库
+
+/*************有关代码**************/
+将老基础笔记整理上传到github 
+wechat miniprogram
+
+所有开发文件都放在/原文件压缩包备份在temp-sec 
+将所有文件备份在公司代码托管上 all-project.zip / 交接文档
+
+
+
+
+
+
+
+
+main.ts： 
+inject部分： api里没有registerImplementation，
+函数async/await, func().catch(e=> {})
+try{}catch(e) {}
+why static
+
+
+
+
+
+
+/*************工作进度**************/
+
+vue脱离ui库建立功能架构
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -73,18 +113,6 @@ private hAlignTexts:{[align:string]:string} = {};
 
 
 
-进度：
-
-
-demos: 
-
-调试功能   ???????index.html
-RES资源管理   ??????用其它实例
-粒子  ???? 错的
-骨骼动画   未应用，stop
-EUI基础控件
-EUI布局及高级显示
-脏矩形下载运行重置
 
 
 
@@ -167,6 +195,9 @@ EUI布局及高级显示
 21. Point       (二维坐标系统中的某个位置)
 21. Rectangle   (按其位置（由它左上角的点 (x, y) 确定）以及宽度和高度定义的区域)
 
+22. stage  主绘图区
+
+
 
 22.localStorage   (全局)
 
@@ -222,9 +253,13 @@ RES相关都在这里
 
 
 
+
 36. 写好的LoadingUI 逻辑待看
 
 37. dragonBones   目前项目中未应用
+
+38. lifecycle
+切换应用前后台
 
 
 
@@ -241,6 +276,8 @@ EUI部分
 
 UILayer: 容器
 Label 
+
+
 
 
 

@@ -93,6 +93,8 @@ static disp():void {console.log()}
 用关键字implements，并将 interest 字段作为类的属性使用。
 
 
+访问控制修饰符: 来保护对类、变量、方法和构造方法的访问
+protected : 受保护，可以被其自身以及其子类和父类访问。
 
 11. TS对象
   鸭子类型（Duck Typing）？
