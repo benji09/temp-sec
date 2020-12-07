@@ -1,7 +1,28 @@
-项目中：
+项目：  V来3期
 
-/*************有关代码**************/
-将老基础笔记整理上传到github 
+周四前新项目3个： 3
+50个页面逻辑（V20个,taltz 30个）： 48
+
+
+V来随记：
+首页 -> 个人中心 -> 排行榜
+用户信息：dataManager
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************要做的**************/
+将老基础笔记整理上传到github,用公司邮箱试试
 wechat miniprogram
 
 所有开发文件都放在/原文件压缩包备份在temp-sec 
@@ -25,36 +46,34 @@ why static
 
 
 
+
+
 /*************工作进度**************/
 
 vue脱离ui库建立功能架构
+mockup
+一些技术付费授课观察
 
 
+V来结构: 
+    libs: 
+        modules: egret...
+        socket
+        声明文件
+    pdf:  ?????   
+    resource
+    scripts
+    src
+        component 
+        event 
+        model 
+        net 
+        scene 
+        util
+    static 
+    template 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-lib文件
-modules: egret...
-第三方库
-
-src 
-    component 
-    event 
-    model 
-    net 
-    scene 
-    util
 
 taltz:
     resource/brand: host
@@ -79,6 +98,7 @@ resource
 
 
 
+
 要解决的：
 语法点
 promise其它方法
@@ -93,6 +113,7 @@ egret生态运用
 沙发
 app小王子  社区管理员 | 2020-9-9 09:56:01
 egret run -port 端口号8061
+sass 
 
 
 
@@ -175,7 +196,7 @@ private hAlignTexts:{[align:string]:string} = {};
 
 
 12. BitmapFillMode
-13. BlendMode
+13. BlendMode   (提供混合模式可视效果的常量值)
 
 14. Sprite       (基本显示列表构造块)
 
@@ -276,6 +297,8 @@ EUI部分
 
 UILayer: 容器
 Label 
+UIEvent
+Group 自动布局的容器基类
 
 
 
