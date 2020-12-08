@@ -1,6 +1,4 @@
-/**
- * Typescript 
- */
+
 1.JS的超集, 微软开发，面向对象
   现有的 JavaScript 代码可与 TypeScript 一起工作无需任何修改
 
@@ -85,7 +83,7 @@ var customer:IPerson = {
 
 
 10. TS类  
-静态
+静态    (不会被实例继承)
 static num:number;
 static disp():void {console.log()}
 

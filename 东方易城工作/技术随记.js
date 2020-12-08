@@ -47,4 +47,4 @@ promise:    1. 3状态：pending, fulfilled, rejected
             4. .then() 接收2函数作参，成功/失败，2函数只会有一个被调用。
             5. 通过 .then 形式添加的回调函数，不论什么时候，都会被调用。可添加多个then即回调，独立运行
         
-       
+     
