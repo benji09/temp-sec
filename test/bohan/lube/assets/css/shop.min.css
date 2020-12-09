@@ -1,0 +1,138 @@
+.row .sales-search {
+    padding: 60px 45px 30px;
+    font-size: 16px;
+}
+.row .sales-search .tip {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.row .sales-search .select-group {
+    display: inline-block;
+}
+.row .sales-search .form-control {
+    width: 118px;
+    height: 32px;
+    border-radius: 0;
+    padding: 0 15px;
+    font-size: 16px;
+}
+.row .sales-search .btn {
+    width: 80px;
+    height: 34px;
+    background-color: #d8052e;
+    border-radius: 0;
+    color: #fff;
+    font-size: 16px;
+}
+.row .sales-search select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url(../images/arrow.png) no-repeat;
+    background-position: 96% center;
+    background-size: 20px;
+}
+.row .sales-search select::-ms-expand {
+    display: none;
+}
+.row .sales-result {
+    padding: 0 45px;
+}
+.row .sales-result h3 {
+    text-align: center;
+    border-bottom: 3px solid #d8052e;
+    padding-bottom: 18px;
+    font-size: 25px;
+    margin: 0;
+}
+.row .sales-result h3 span {
+    color: #d8052e;
+}
+.row .sales-result h3 span.province {
+    margin-right: 15px;
+}
+.row .sales-result ul {
+    padding: 70px 0 30px;
+    overflow: hidden;
+    margin: 0;
+}
+.row .sales-result ul li {
+    min-height: 150px;
+    padding-bottom: 30px;
+    font-size: 13px;
+}
+.row .sales-result ul li .company {
+    font-weight: bold;
+    font-size: 15px;
+}
+.row .sales-result ul li .company span {
+    background-color: #d8052e;
+    color: #fff;
+    font-size: 13px;
+    padding: 2px 5px;
+    margin-left: 6px;
+}
+.row .sales-result ul li .name a {
+    color: #d8052e;
+    text-decoration: underline;
+}
+.row .sales-result ul li .name a:hover {
+    color: #d8052e;
+    text-decoration: underline;
+}
+@media (max-width: 991px) {
+    .row .sales-search {
+        padding: 5vw 0;
+        font-size: 4vw;
+    }
+    .row .sales-search .form-group {
+        flex-direction: column;
+    }
+    .row .sales-search .tip {
+        font-size: 3vw;
+    }
+    .row .sales-search .select-group {
+        display: block;
+        margin-top: 2vw;
+    }
+    .row .sales-search .form-control {
+        width: 26vw;
+        height: 8vw;
+        padding: 0 3vw;
+        font-size: 3.4vw;
+        display: inline-block;
+    }
+    .row .sales-search .btn {
+        width: 18vw;
+        height: 8.6vw;
+        font-size: 3.4vw;
+    }
+    .row .sales-search select {
+        background-size: 5vw;
+    }
+    .row .sales-result {
+        padding: 0 4vw;
+    }
+    .row .sales-result h3 {
+        padding-bottom: 4vw;
+        font-size: 5vw;
+    }
+    .row .sales-result h3 span.province {
+        margin-right: 3vw;
+    }
+    .row .sales-result ul {
+        padding: 10vw 0 5vw;
+    }
+    .row .sales-result ul li {
+        min-height: 35vw;
+        padding-bottom: 6vw;
+        font-size: 3.4vw;
+    }
+    .row .sales-result ul li .company {
+        font-size: 4vw;
+    }
+    .row .sales-result ul li .company span {
+        font-size: 3.4vw;
+    }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  viewport-fit=cover">
+    <meta name="keywords" content="idemitsu,出光,出光润滑油,汽车用润滑油,工业用润滑油" /> 
+    <meta name="description" content="出光润滑油(中国)有限公司【IDEMITSU LUBE CHINA Co.，Ltd.】是一家在中国主要从事润滑油生产、销售和研究的公司，也是出光集团中的主要公司之一。" /> 
+    <!-- <title>IDEMITSU LUBE CHINA 出光润滑油（中国）有限公司</title>  -->
+    <title>bohan</title>
+    <link rel="stylesheet" href="lube/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lube/assets/font/iconfont.css">
+    <link rel="stylesheet" href="lube/assets/css/common.min.css">
+    <link rel="stylesheet" href="lube/assets/css/shop.min.css">
+    <style>
+        #map {
+            overflow: hidden;
+            width: 100%;
+            height: 800px;
+            margin: 0;
+            font-family: "微软雅黑";
+
+        }
+    </style>
+    <script src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=OGpW3qTzoRHh4fSN8ROg9Rkn9dzUZAGF"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row custom-breadcrumb d-none d-lg-block">
+            <a href="lube/">首页</a> &gt;
+            <span>代理店</span>
+        </div>
+        <h2 class="page-title">代理店网点查询</h2>
+        <div class="row main-shadow">
+            <div class="sales-search text-center col-12">
+                <form class="form-inline flex-column">
+                    <div class="form-group">
+                        请选择代理店所属区域&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="select-group">
+                            <select name="province" class="form-control">
+							<option value="">全部</option>
+							<option value=""</option>
+                            </select>
+                            <select name="city" class="form-control">
+							<option value="">全部</option>
+							<option value=""></option>
+                            </select>
+                            <input type="submit" value="搜索" class="btn btn-default link-shadow">
+                        </div>
+                    </div>
+					<p class="tip">* 仅显示有代理店的区域</p>
+                </form>
+            </div>
+            <!-- 地图显示区域开始 -->
+            <div class="sales-map col-12" style="border: 1px solid #000;">
+                <div id="map"></div>
+
+            </div>
+            <!-- 地图显示区域结束 -->
+
+
+            <div class="sales-result col-12">
+                <h3>代理店搜索结果</h3>
+                <ul class="row">
+                    <li class="col-12 col-lg-4">
+                        <p class="company"><span></span></p>
+                        <p class="address">地址：<span></span></p>
+                        <p class="phone">电话：<span></span></p>
+                        <p class="name">联系人：<span></span></p>
+                        <p class="name"><a href="">&gt;&gt;查看店铺详情</a></p>
+                    </li>
+					<li class="clearfix visible-md-block visible-lg-block"></li>';
+                </ul>
+            </div>
+			<div class="col-12 text-center mb-3">
+			    <nav style="display: inline-block;">
+    			</nav>
+			</div>
+        </div>
+    </div>
+    <script src="lube/assets/js/jquery-3.5.1.min.js" id="jquery"></script>
+    <script src="lube/assets/js/bootstrap.min.js"></script>
+    <script src="lube/assets/js/index.js"></script>
+    <script>
+	$(function(){
+		$('select[name=province]').change(function(){
+			getCityVal();
+		})
+	})
+	function getCityVal()
+	{
+		var province = $('select[name=province]').val();
+		$.getJSON("lube/getcity", {province:province}, function(json){
+			var city = $('select[name=city]');
+			$('option', city).remove();
+			$(city).prepend("<option value='' select>全部</option>");
+			$.each(json,function(index, arr){
+				var option = "<option value='"+arr['id']+"'>"+arr['name']+"</option>";
+				city.append(option);
+			});
+		});
+	}
+
+    // 地图相关
+    var longitude, latitude, accuracy   //经纬度
+    function getCurrentPosition() {
+        if(window.navigator.geolocation){
+            window.navigator.geolocation.getCurrentPosition(function(pos){
+                alert(1)
+                console.log(pos);
+                latitude = pos.coords.latitude; 
+                longitude = pos.coords.longitude;
+                accuracy = pos.coords.accuracy	 
+            }, function(error) {
+                console.log(error);
+                
+
+            })
+        }else {
+            console.log('您的浏览器不支持地理定位');
+        }
+    }
+    getCurrentPosition();
+    var map = new BMapGL.Map('map'); // 创建Map实例
+    map.centerAndZoom(new BMapGL.Point(121.48789949,31.24916171), 12); // 初始化地图,设置中心点坐标和地图级别
+    // map.centerAndZoom('上海市', 12); // 根据城市设置城市中心点
+    map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+    //点覆盖物
+    var marker = new BMapGL.Marker(new BMapGL.Point(121.48789949,31.24916171));
+    map.addOverlay(marker);
+    map.setDisplayOptions({
+    overlay: true,   //是否显示覆盖物
+    })
+
+    //店铺位置信息转为经纬度
+    var shopDatas = [
+        "上海市襄阳公园",
+        "上海市馨逸公寓18号",
+        "上海市虹桥绿谷C幢"
+    ]
+    var index = 0;
+    var myGeo = new BMapGL.Geocoder();
+    //批量地址解析显示在地图上
+    function AllAddressToMap(shopDatas) {
+        if (shopDatas.length > 0) {
+            var shopData = shopDatas[index];
+            geoCodeSearch(shopData);
+            index++;
+        }
+        
+    }
+    function geocodeSearch(add){
+        if(index < adds.length){
+            setTimeout(window.bdGEO,400);
+        } 
+        myGeo.getPoint(add, function(point){
+            if (point) {
+                var address = new BMapGL.Point(point.lng, point.lat);
+                addMarker(address,new BMapGL.Label(index+":"+add,{offset:new BMapGL.Size(10,-10)}));
+            }
+        }, "上海市");
+    }
+    
+    
+    AllAddressToMap();
+    //经纬度转换成当前城市
+    function cityToPoint() {
+        
+    }
+   
+
+	</script>
+</body>
+</html>

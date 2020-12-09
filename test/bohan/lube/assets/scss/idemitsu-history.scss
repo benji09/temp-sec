@@ -1,0 +1,105 @@
+@import './idemitsu.scss';
+
+.row {
+    &.company-title {
+        margin-bottom: 40px;
+    }
+
+    &.anchor {
+        a {
+            display: inline-block;
+            width: 230px;
+            height: 42px;
+            line-height: 42px;
+            padding: 0 20px;
+            font-size: 20px;
+            border: 1px solid #cbcbcb;
+            border-right: none;
+            color: #000;
+            text-align: left;
+            .iconfont {
+                float: right;
+                transform: rotateZ(90deg);
+            }
+            &:last-child {
+                border-right: 1px solid #cbcbcb;
+            }
+            &:hover {
+                background-color: $mainColor;
+                color: #fff;
+            }
+        }
+    }
+
+    &.history {
+        .history-list {
+            p {
+                margin-top: 60px;
+                font-weight: bold;
+                font-size: 20px;
+                padding-left: 30px;
+            }
+            .table {
+                tbody {
+                    font-size: 16px;
+                    tr,
+                    td {
+                        border: none;
+                    }
+                    td {
+                        padding-left: 30px;
+                        line-height: 2;
+                        &:nth-child(1) {
+                            width: 12%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .row {
+        &.company-title {
+            margin-bottom: 5vw;
+        }
+
+        &.anchor {
+            a {
+                width: 30vw;
+                height: 10vw;
+                line-height: 10vw;
+                padding: 0 3vw;
+                font-size: 3.4vw;
+            }
+        }
+
+        &.history {
+            margin: 0;
+            .history-list {
+                padding-left: 0;
+                p {
+                    margin-top: 6vw;
+                    font-size: 4.5vw;
+                    padding-left: 3vw;
+                }
+                .table {
+                    white-space: nowrap;
+                    tbody {
+                        font-size: 3.4vw;
+                        td {
+                            padding-left: 3vw;
+                            &:nth-child(1) {
+                                width: 20%;
+                            }
+                            &:last-child {
+                                padding-right: 5vw;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

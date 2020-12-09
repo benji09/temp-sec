@@ -1,0 +1,42 @@
+.table {
+    width: 970px;
+    margin: 0 auto;
+    font-size: 16px;
+    tbody {
+        tr {
+            td {
+                height: 60px;
+                padding: 0 20px;
+                border: none;
+                vertical-align: middle;
+                strong {
+                    font-size: 25px;
+                }
+            }
+            &:last-child {
+                background-color: #fff;
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .table {
+        width: 100%;
+        font-size: 3.5vw;
+        tbody {
+            tr {
+                td {
+                    height: 12vw;
+                    padding: 0 15px;
+                    strong {
+                        font-size: 4.2vw;
+                    }
+                    &:first-child {
+                        width: 22vw;
+                    }
+                }
+            }
+        }
+    }
+}

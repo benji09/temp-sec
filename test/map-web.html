@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Bohan</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <style>
+        html, body, #container {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+        body {
+            background-color: #fff;
+        }
+    </style>
+    <script src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=OGpW3qTzoRHh4fSN8ROg9Rkn9dzUZAGF"></script>
+</head>
+<body>
+    <div class="header">
+        <select name="" id="" class="province">
+            <option value="上海"></option>
+        </select>
+        <select name="" id="" class="city">
+            <option value="上海"></option>
+        </select>
+        <button>搜索</button>
+    </div>
+    <div class="map">
+
+        <div id="container"></div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>
+<script>
+var map = new BMapGL.Map('container'); // 创建Map实例
+map.centerAndZoom(new BMapGL.Point(116.404, 39.915), 12); // 初始化地图,设置中心点坐标和地图级别
+map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+</script>

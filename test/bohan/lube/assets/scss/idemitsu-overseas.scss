@@ -1,0 +1,86 @@
+@import './idemitsu-history.scss';
+
+.row {
+    &.anchor {
+        a {
+            width: 115px;
+            margin-right: 6px;
+            padding: 0 10px;
+            border-right: 1px solid #cbcbcb;
+            &:hover {
+                background-color: $mainColor;
+                color: #fff;
+            }
+        }
+    }
+    &.overseas {
+        h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .table {
+            tbody {
+                tr {
+                    th,
+                    td {
+                        padding: 20px 30px;
+                    }
+                    th {
+                        width: 40%;
+                        font-size: 16px;
+                        vertical-align: top;
+                    }
+                    td {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .row {
+        &.anchor {
+            text-align: left;
+            padding: 4vw;
+            justify-content: start !important;
+            a {
+                margin-right: 2vw;
+                width: 27vw;
+                margin-bottom: 3vw;
+                &:nth-child(3) {
+                    margin-right: 0;
+                }
+            }
+        }
+        &.overseas {
+            margin: 0;
+            h4 {
+                font-size: 4.2vw;
+                margin-bottom: 3vw;
+            }
+            .table-responsive {
+                border: none;
+            }
+            .table {
+                white-space: nowrap;
+                tbody {
+                    tr {
+                        th,
+                        td {
+                            padding: 4vw 5vw;
+                        }
+                        th {
+                            width: 40%;
+                            font-size: 4vw;
+                        }
+                        td {
+                            font-size: 3.4vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

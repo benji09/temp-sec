@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>   
+<title>Geolocation和百度地图API进行地理定位实例</title>   
+    <head>   
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <style>
+            body, html,#container {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                margin:0;
+                font-family:"微软雅黑";
+            }
+        </style>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=134db1b9cf1f1f2b4427210932b34dcb"></script>   
+    </head>   
+    <body>   
+        <div id="status" style="text-align: center"></div>   
+        <div id="container"></div>   
+    </body>   
+</html>   
+     
+<script type="text/javascript">   
+    //默认地理位置设置为上海市浦东新区 
+    var x = 121.48789949,y = 31.24916171;
+    var tip = document.getElementById("status");
+    window.onload = function() {   
+        if(navigator.geolocation) {
+            // navigator有3个方法:clearWatch、getCurrentPosition、watchPosition
+            navigator.geolocation.getCurrentPosition(showPosition);  
+            document.getElementById("status").innerHTML = "HTML5 Geolocation is supported in your browser.";   
+                // 百度地图API功能   
+                var map = new BMap.Map("container"); // 创建Map实例
+                var point = new BMap.Point(x,y); // 设置中心点坐标  
+                map.centerAndZoom(point,12); // 初始化地图,设置中心点坐标和地图级别、
+                map.addControl(new BMap.MapTypeControl()); // 添加地图类型控件
+                map.setCurrentCity("上海"); // 设置地图显示的城市,此项是必须设置的
+                map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+     
+                var geolocation = new BMap.Geolocation(); // geolocation 有2个方法:getCurrentPosition、getStatus
+                geolocation.getCurrentPosition(
+                    function(r){ // 成功的回调
+                        console.log("通过百度地图定位");
+                        if(this.getStatus() == BMAP_STATUS_SUCCESS){   
+                            var mk = new BMap.Marker(r.point);   
+                            map.addOverlay(mk);   
+                            map.panTo(r.point);   
+                        }else {   
+                            alert('failed'+this.getStatus()); // 此处的this指代 geolocation  
+                        }
+                    },
+                    function(error){ // 失败的回调
+                        switch(error.code) {
+                            case error.TIMEOUT:
+                                tip.innerHTML = "A timeout occured! Please try again!发生超时！请重试！";
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                tip.innerHTML = 'We can\'t detect your location. Sorry!我们无法探测到你的位置,对不起！';
+                                break;
+                            case error.PERMISSION_DENIED:
+                                tip.innerHTML = 'Please allow geolocation access for this to work.请允许访问地理位置';
+                                break;
+                            case error.UNKNOWN_ERROR:
+                                tip.innerHTML = 'An unknown error occured!发生未知错误！';
+                                break;
+                        }
+                    },{
+                    // 指示浏览器获取高精度的位置，默认为false
+                    enableHighAccuracy: true,
+                    // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
+                    timeout: 5000,
+                    // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
+                    maximumAge: 3000
+                })  
+            return; 
+        }   
+        alert("你的浏览器不支持获取地理位置！");
+    };   
+    function showPosition(position){  // 成功的回调
+        console.log("通过原生H5的geolocation定位");
+        x = position.coords.latitude; // 维度 
+        y = position.coords.longitude; // 经度
+    };
+</script>

@@ -1,0 +1,100 @@
+.row {
+    .company-philosophy {
+        p {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        img {
+            margin: 100px 0;
+        }
+    }
+    .table-responsive {
+        border: none;
+        padding: 0;
+    }
+    .table {
+        width: 970px;
+        margin: 0 auto;
+        font-size: 14px;
+        tbody {
+            tr {
+                td {
+                    background-color: #fafafb;
+                    border: none;
+                    border-bottom: 3px solid #fff;
+                    vertical-align: middle;
+                    &:first-child {
+                        background-color: #f4f7f7;
+                    }
+                    &:nth-child(1) {
+                        padding: 0 20px;
+                    }
+                    &:nth-child(2) {
+                        padding: 60px 40px;
+                    }
+                    ul {
+                        li {
+                            line-height: 35px;
+                        }
+                    }
+                }
+                &:nth-child(n+2) {
+                    ul {
+                        li {
+                            &:nth-child(odd) {
+                                font-weight: bold;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .row {
+        .company-philosophy {
+            p {
+                font-size: 3vw;
+                margin-bottom: 1vw;
+            }
+            img {
+                margin: 5vw 0;
+            }
+        }
+        .table {
+            width: 206vw;
+            min-width: 750px;
+            tbody {
+                tr {
+                    td {
+                        &:nth-child(1) {
+                            padding: 0 1vw;
+                            width: 30vw;
+                        }
+                        &:nth-child(2) {
+                            padding: 5vw;
+                        }
+                        ul {
+                            li {
+                                line-height: 6vw;
+                                font-size: 3vw;
+                            }
+                        }
+                    }
+                    &:nth-child(n+2) {
+                        ul {
+                            li {
+                                &:nth-child(odd) {
+                                    font-size: 3.5vw;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
