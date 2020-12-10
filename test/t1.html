@@ -1,114 +1,71 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <style type="text/css">
-        body,
-        html,
-        #allmap {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            margin: 0;
-            font-family: "微软雅黑";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 340px;
+            height: 150px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow:3px 3px 4px 1px #ccc;
         }
+        .clearfix:after{
+            content: "020"; 
+            display: block; 
+            height: 0; 
+            clear: both; 
+            visibility: hidden;  
+        }
+        .company {
+            color: rgb(216, 117, 78);
+            font-weight: 700;
+        }
+        .type {
+            background-color: #d8052e;
+            color: #fff;
+            font-size: 13px;
+            padding: 2px 5px;
+            display: inline-block;   
+            margin-top: 15px;
+        }
+        .info {
+            margin: 20px 0;
+        }
+        .info-left {
+            width: 70%;
+            float: left;
+        }
+        .info-left .phone {
+            margin: 4px 0;
+        }
+        .info-right {
+            width:28%;
+            float: right;
+            text-align: center;
+        }
+        .info-right a {
+            display: block;
+        }
+        .info-right span {
+            display: block;
+        }
+
     </style>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yZSTYLk9UUvs0ZqXqBbtTp8ViKk5vxLM"></script>
-    <title>添加行政区划</title>
 </head>
-
 <body>
-    <div id="allmap"></div>
+    <div class="wrap"> 
+        <div class="company"><span>路安汽车维修中心&nbsp;&nbsp;</span><a href="">&gt;&gt;店铺详情</a></div>
+        <div class="type"><span>一般贩卖店</span></div>
+        <div class="info clearfix">
+            <div class="info-left">
+                <div class="address"><span><strong>地址：</strong>上海市襄阳公园襄阳公园襄阳公园襄阳公园</span></div>
+                <div class="phone"><span><strong>电话：</strong>15265455422</span></div>
+            </div>
+            <div class="info-right"><a href=""><img src="navigator.png" alt="" width="40" height="40"></a><span>到这去</span></div>
+        </div>
+    </div>
 </body>
-
 </html>
-<script type="text/javascript">
-    // 百度地图API功能
-    var map = new BMap.Map("allmap");
-    map.centerAndZoom(new BMap.Point(116.403765, 39.914850), 5);
-    map.enableScrollWheelZoom();
-    map.setMapStyle({
-        style: "grayscale"
-    });
-
-    function getBoundary(cityName) {
-        var bdary = new BMap.Boundary();
-        bdary.get(cityName, function(rs) { //获取行政区域     
-            map.clearOverlays();
-            var count = rs.boundaries.length; //行政区域的点有多少个
-            if (count === 0) {
-                alert('未能获取当前输入行政区域');
-                return;
-            }
-            var pointArray = [];
-            for (var i = 0; i < count; i++) {
-                var ply = new BMap.Polygon(rs.boundaries[i], {
-                    strokeWeight: 2,
-                    strokeColor: "#ff0000",
-                    fillColor: "#ff0000"
-                }); //建立多边形覆盖物
-                map.addOverlay(ply); //添加覆盖物
-                pointArray = pointArray.concat(ply.getPath());
-            }
-            map.setViewport(pointArray); //调整视野  
-        });
-    }
-
-    var a = [
-        "北京市",
-        "天津市",
-        "石家庄市",
-        "廊坊市",
-        "太原市",
-        "上海市",
-        "杭州市",
-        "绍兴市",
-        "青岛市",
-        "德州市",
-        "武汉市",
-        "广州市",
-        "深圳市",
-        "东莞市",
-        "重庆市",
-        "成都市",
-        "眉山市",
-        "西安市"
-    ]
-    var i = 0;
-
-    var timer = setInterval(function() {
-        if (i == a.length) {
-            map.clearOverlays();
-            map.centerAndZoom(new BMap.Point(116.403765, 39.914850), 5);
-            for (var n = 0; n < a.length; n++) {
-                getBoundary1(a[n])
-            }
-            clearInterval(timer)
-        } else {
-            getBoundary(a[i++])
-        }
-    }, 2000)
-
-
-    function getBoundary1(cityName) {
-        var bdary = new BMap.Boundary();
-        bdary.get(cityName, function(rs) { //获取行政区域     
-            var count = rs.boundaries.length; //行政区域的点有多少 个
-            if (count === 0) {
-                alert('未能获取当前输入行政区域');
-                return;
-            }
-            var pointArray = [];
-            for (var i = 0; i < count; i++) {
-                var ply = new BMap.Polygon(rs.boundaries[i], {
-                    strokeWeight: 2,
-                    strokeColor: "#ff0000",
-                    fillColor: "#ff0000"
-                }); //建立多边形覆盖物
-                map.addOverlay(ply); //添加覆盖物
-            }
-        });
-    }
-</script>

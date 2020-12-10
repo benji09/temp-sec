@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  viewport-fit=cover">
+    <meta name="keywords" content="idemitsu,出光,出光润滑油,汽车用润滑油,工业用润滑油" /> 
+    <meta name="description" content="出光润滑油(中国)有限公司【IDEMITSU LUBE CHINA Co.，Ltd.】是一家在中国主要从事润滑油生产、销售和研究的公司，也是出光集团中的主要公司之一。" /> 
+    <!-- <title>IDEMITSU LUBE CHINA 出光润滑油（中国）有限公司</title>  -->
+    <title>bohan</title>
+    <link rel="stylesheet" href="lube/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lube/assets/font/iconfont.css">
+    <link rel="stylesheet" href="lube/assets/css/common.min.css">
+    <link rel="stylesheet" href="lube/assets/css/shop.min.css">
+    <style>
+        #map {
+            overflow: hidden;
+            width: 100%;
+            height: 800px;
+            margin: 0;
+            font-family: "微软雅黑";
+
+        }
+        .clearfix:after{
+            content: "020"; 
+            display: block; 
+            height: 0; 
+            clear: both; 
+            visibility: hidden;  
+        }
+        .company {
+            color: rgb(216, 117, 78);
+            font-weight: 700;
+        }
+        .type {
+            background-color: #d8052e;
+            color: #fff;
+            font-size: 13px;
+            padding: 2px 5px;
+            display: inline-block;   
+            margin-top: 15px;
+        }
+        .info {
+            margin: 20px 0;
+        }
+        .info-left {
+            width: 70%;
+            float: left;
+        }
+        .info-left .phone {
+            margin: 4px 0;
+        }
+        .info-right {
+            width:28%;
+            float: right;
+            text-align: center;
+        }
+        .info-right a {
+            display: block;
+        }
+        .info-right span {
+            display: block;
+        }
+    </style>
+    <script src="//api.map.baidu.com/api?v=2.0&ak=OGpW3qTzoRHh4fSN8ROg9Rkn9dzUZAGF"></script>
+    <!-- <script type="text/javascript" src="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script> -->
+	<!-- <link rel="stylesheet" href="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" /> -->
+	
+</head>
+<body>
+    <div class="container">
+        <div class="row custom-breadcrumb d-none d-lg-block">
+            <a href="lube/">首页</a> &gt;
+            <span>代理店</span>
+        </div>
+        <h2 class="page-title">代理店网点查询</h2>
+        <button style="background-color: red;" onclick="search()">search</button>
+        <div class="row main-shadow">
+            <div class="sales-search text-center col-12">
+                <form class="form-inline flex-column">
+                    <div class="form-group">
+                        请选择代理店所属区域&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="select-group">
+                            <select name="province" class="form-control">
+							<option value="">全部</option>
+							<option value="上海市">上海市</option>
+                            </select>
+                            <select name="city" class="form-control">
+							<option value="">全部</option>
+							<option value=""></option>
+                            </select>
+                            <!-- test -->
+                            <input type="submit" value="搜索" class="btn btn-default link-shadow">
+                        </div>
+                    </div>
+					<p class="tip">* 仅显示有代理店的区域</p>
+                </form>
+            </div>
+            <!-- 地图显示区域开始 -->
+            <div class="sales-map col-12" style="border: 1px solid #000;">
+                <div id="map"></div>
+
+            </div>
+            <!-- 地图显示区域结束 -->
+
+
+            <div class="sales-result col-12">
+                <h3>代理店搜索结果</h3>
+                <ul class="row">
+                    <li class="col-12 col-lg-4">
+                        <p class="company"><span></span></p>
+                        <p class="address">地址：<span></span></p>
+                        <p class="phone">电话：<span></span></p>
+                        <p class="name">联系人：<span></span></p>
+                        <p class="name"><a href="">&gt;&gt;查看店铺详情</a></p>
+                    </li>
+					<li class="clearfix visible-md-block visible-lg-block"></li>';
+                </ul>
+            </div>
+			<div class="col-12 text-center mb-3">
+			    <nav style="display: inline-block;">
+    			</nav>
+			</div>
+        </div>
+    </div>
+    <script src="lube/assets/js/jquery-3.5.1.min.js" id="jquery"></script>
+    <script src="lube/assets/js/bootstrap.min.js"></script>
+    <script src="lube/assets/js/index.js"></script>
+    <script>
+	$(function(){
+		$('select[name=province]').change(function(){
+			getCityVal();
+		})
+	})
+	function getCityVal()
+	{
+		var province = $('select[name=province]').val();
+		$.getJSON("lube/getcity", {province:province}, function(json){
+			var city = $('select[name=city]');
+			$('option', city).remove();
+			$(city).prepend("<option value='' select>全部</option>");
+			$.each(json,function(index, arr){
+				var option = "<option value='"+arr['id']+"'>"+arr['name']+"</option>";
+				city.append(option);
+			});
+		});
+	}
+
+    // 地图相关
+    var longitude, latitude, accuracy   //经纬度
+    function getCurrentPosition() {
+        if(window.navigator.geolocation){
+            window.navigator.geolocation.getCurrentPosition(function(pos){
+                console.log(pos);
+                latitude = pos.coords.latitude; 
+                longitude = pos.coords.longitude;
+                accuracy = pos.coords.accuracy	 
+            }, function(error) {
+                console.log(error);
+                
+
+            })
+        }else {
+            console.log('您的浏览器不支持地理定位');
+        }
+    }
+    getCurrentPosition();
+    var map = new BMap.Map('map'); // 创建Map实例
+    map.centerAndZoom(new BMap.Point(121.48789949,31.24916171), 12); // 初始化地图,设置中心点坐标和地图级别
+    // map.centerAndZoom('上海市', 12); // 根据城市设置城市中心点
+    map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+    
+
+    //店铺位置信息转为经纬度
+    var addresses = [
+        "上海市襄阳公园",
+        "上海市复兴公园",
+        "上海市鲁迅公园",
+        "上海市中山公园",
+    ]
+    var data_info = [[121.46319302993159,31.223318834853075,"地址：上海市襄阳公园"],
+					 [121.47564668836917,31.222986403610605,"地址：上海市复兴公园"],
+					 [121.49015504099972,31.27747583774849,"地址：上海市鲁迅公园"]
+					];
+
+    var index = 0;
+    var myGeo = new BMap.Geocoder();
+
+    //批量地址解析显示在地图上，根据搜索结果返回调用
+    function search() {
+        // if (addresses.length > index) {
+        //     var address = addresses[index];
+        //     geocodeSearch(address);
+        //     index++;
+        // }
+        addMarker();
+    }
+    function geocodeSearch(address){
+        if(addresses.length > index){
+            setTimeout(window.search,100);
+        } 
+        myGeo.getPoint(address, function(point){
+            if (point) {
+                var location = new BMap.Point(point.lng, point.lat);
+                addMarker(location);
+            }else {
+                console.log(`${address}':该地址没有解析到结果！'`);
+            }
+        }, '北京市');
+    }
+
+    // 添加自定义地理位置图标
+	function addMarker(){
+        // var myIcon = new BMap.Icon("lube/assets/images/point-icon.png", new BMap.Size(42, 42));
+        // var marker = new BMap.Marker(location, {icon:myIcon});
+        // console.log(location)
+        // console.log(marker)
+        // map.addOverlay(marker);
+        
+        //创建图标及信息窗口
+        var opts = {
+            width : 340,     // 信息窗口宽度
+            height: 150,     // 信息窗口高度
+            title : "" , // 信息窗口标题
+            enableMessage:true//设置允许信息窗发送短息
+        }
+        for(var i=0;i<data_info.length;i++){
+            var myIcon = new BMap.Icon("lube/assets/images/point-icon.png", new BMap.Size(42, 42));
+            var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]), {icon:myIcon});  // 创建标注
+            var content = data_info[i][2];
+            map.addOverlay(marker);    
+            addClickHandler(content,marker);
+        }
+        function addClickHandler(content,marker){
+            marker.addEventListener("click",function(e){
+                openInfo(content,e)}
+            );
+        }
+        function openInfo(content,e){
+            //信息窗口样式
+            //href: 用模板添加当前地址（自定义属性data-）
+            var content = 
+            '<div class="wrap"> ' +
+                '<div class="company"><span>路安汽车维修中心&nbsp;&nbsp;</span><a href="">&gt;&gt;店铺详情</a></div>' +
+                '<div class="type"><span>一般贩卖店</span></div>' +
+                '<div class="info clearfix">' +
+                    '<div class="info-left">' +
+                        '<div class="address"><span><strong>地址：</strong>上海市襄阳公园襄阳公园襄阳公园襄阳公园</span></div>' +
+                        '<div class="phone"><span><strong>电话：</strong>15265455422</span></div>' +
+                    '</div>' +
+                    '<div class="info-right"><a href="https://map.baidu.com/" id="to-map"><img src="lube/assets/images/navigator.png" alt="" width="40" height="40"></a><span>到这去</span></div>' +
+                '</div>' +
+            '</div>';
+            var p = e.target;
+            var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+            var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+            map.openInfoWindow(infoWindow,point); //开启信息窗口
+            var currentAddress = infoWindow.getContent();
+           
+        }
+
+        // var toMapIcon = document.getElementById('to-map');
+        //     console.log(toMapIcon);
+        //       //到这去
+        //     toMapIcon.addEventListener('click', function(e) {
+        //         window.location.href = 'https://map.baidu.com/'
+        //     })
+
+        
+      
+        
+    }
+
+    
+
+
+  
+    //经纬度转换成省名显示在选择框默认值
+    // map.addEventListener('click', function(e) {console.log(e.latlng);})
+    myGeo.getLocation(new BMap.Point( 121.48789949, 31.24916171), function(rs){
+        var addComp = rs.addressComponents;
+        // 无option添加option,作下接口返回判断
+        var province = addComp.province;
+        $('select[name=province] option[value=' + province +']').attr('selected', true);
+    })
+    
+    
+    //到这去
+    
+    
+
+	</script>
+</body>
+</html>
