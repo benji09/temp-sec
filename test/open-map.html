@@ -17,7 +17,8 @@
             var u = navigator.userAgent;
             var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; 
             var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-            var isWeixin = u.match(/MicroMessenger/i) == 'MicroMessenger'; //微信浏览器       
+            var isWeixin = u.match(/MicroMessenger/i) == 'MicroMessenger'; //微信浏览器 
+            var isPC = !isAndroid && !isIOS;
             if (isAndroid) {
                 window.location.href = 'baidumap://map/place/search?query=广东省广州市白云区长红东路5号101房 ';
                 setTimeout(function(){

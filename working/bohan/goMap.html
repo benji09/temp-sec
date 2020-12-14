@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;list-style: none;}
+    .tip-mask>div {width:50vw;margin:30vw auto;}
+    .tip-mask p{color: #fff; text-align: center;}
+    .tip-mask ul{color: #000; position: relative;}
+    .tip-mask li{width: 50vw; height: 10vw; line-height: 10vw;text-align:center;background-color: #fff; margin-top: 20px;vertical-align: top;}
+    li {background: #fff url('../test/nav48.png') no-repeat 5vw center;cursor: pointer;border: 1px solid #ccc;border-radius: 2px;}
+    
+    </style>
+</head>
+<body>
+    <!-- 移动端导航提示遮罩 -->
+    <div class="tip-mask" style="position:fixed;top:0;bottom:0;left:0;right:0;background-color: rgba(0, 0, 0, 0.6);z-index: 99;">
+        <div class="" style="color:#fff;">
+            <p>请选择导航APP</p>
+            <ul>
+                <li>百度地图</li>
+                <li>高德地图</li>
+                <li>腾讯地图</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
