@@ -1,0 +1,119 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+		    "path" : "pages/loginFlow/login/login",
+		    "style" : {
+		        "navigationBarTitleText" : "登录",
+				"app-plus": {
+					"autoBackButton": false
+				}
+		    }
+		},
+		{
+		    "path" : "pages/loginFlow/logout/logout",
+		    "style" : {
+		        "navigationBarTitleText" : "退出"
+		    }
+		},
+	    {
+            "path" : "pages/lightering/lightering",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "驳运",
+				"navigationBarBackgroundColor": "#FFCC80"
+				
+            }
+        },
+        {
+            "path" : "pages/tabBar/lighteringRecord/lighteringRecord",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "驳运记录",
+				"navigationBarBackgroundColor": "#FFCC80"
+            }
+        },
+		{
+		    "path" : "pages/tabBar/pendingApplication/pendingApplication",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "待处理列表",
+				"navigationBarBackgroundColor": "#FFCC80"
+		    }
+		},
+		{
+		    "path" : "pages/pendingList/pendingList",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "待处理列表",
+				"navigationBarBackgroundColor": "#FFCC80"
+		    }
+		},
+		{
+		    "path" : "pages/tabBar/user/user",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor": "#FFCC80"
+		    }
+		},
+		{
+		    "path" : "pages/remark/remark",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "备注",
+				"navigationBarBackgroundColor": "#FFCC80"
+		    }
+		},
+		{
+		    "path" : "pages/confirmation/confirmation",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "确认",
+				"navigationBarBackgroundColor": "#FFCC80"
+		    }
+		},
+		{
+		    "path" : "pages/headed/headed",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "已出发",
+				"navigationBarBackgroundColor": "#FFCC80"
+		    }
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}, 
+	"tabBar": {
+		"color": "#333",
+		"backgroundColor": "#fff",
+		"selectedColor": "#FFCC80",
+		"borderStyle": "#333",
+		"position": "bottom",
+		"list": [{
+		  "text": "待处理列表",
+		  "pagePath": "pages/tabBar/pendingApplication/pendingApplication",
+		  "iconPath": "",
+		  "selectedIconPath": ""
+		}, {
+		  "text": "驳运记录",
+		  "pagePath": "pages/tabBar/lighteringRecord/lighteringRecord",
+		  "iconPath": "",
+		  "selectedIconPath": ""
+		}, {
+		  "text": "我的",
+		  "pagePath": "pages/tabBar/user/user",
+		  "iconPath": "",
+		  "selectedIconPath": ""
+		}]
+	}
+}
