@@ -1,51 +1,12 @@
 // egret 
 
-
-
-省-市
-市-区
-
-
-
-要解决的:
-1. 初姐位置：经纬度 回调
-3.（纬度、name）显示结果-》反馈在地图上。再根据出来的店去添加marker
-4. marker 经纬度
-
-
-
-
-
-项目：  V来3期
-
-周四前新项目3个： 3
-50个页面逻辑（V20个,taltz 30个）： 48
-接口：35 + 30
-
-
-V来随记：node, vue 1H 
-3首页 -> 个人中心 -> 排行榜
 游戏规则
 5武器装备
 8武器装备列表详情
 答题闯关
 我的收藏
 闯关每关列表
-12答题界面
-
-
-
-
-today: -> 25, 新项目1个
-周三：-> 30, 开源新项目写1个
-周四：-> 40,  
-社区的例子
-犀牛
-
-
-
-
-
+答题界面
 
 
 
@@ -58,100 +19,6 @@ today: -> 25, 新项目1个
 
 $children
 宽高比Unil
-
-
-
-
-
-
-
-/*************要做的**************/
-将老基础笔记整理上传到github,用公司邮箱试试
-wechat miniprogram
-
-所有开发文件都放在/原文件压缩包备份在temp-sec 
-将所有文件备份在公司代码托管上 all-project.zip / 交接文档
-编辑器时间线
-老项目取有用的地方，正则。。
-
-
-
-
-main.ts： 
-inject部分： api里没有registerImplementation，
-func().catch(e=> {})
-try{}catch(e) {}
-hasownproperty
-
-
-
-/*************工作进度**************/
-
-vue脱离ui库建立功能架构
-mockup
-一些技术付费授课观察,有空兼
-
-
-V来结构: 
-    libs: 
-        modules: egret...
-        socket
-        声明文件
-    pdf:  ?????   
-    resource
-    scripts
-    src
-        component 
-        event 
-        model 
-        net 
-        scene 
-        util
-    static 
-    template 
-
-
-
-taltz:
-    resource/brand: host
-    resource/music 
-    template/runtime
-resource 
-    assets: .jpg
-    config: .json
-    eui_skins: .exml 
-    scripts: 项目构建和发布时需要用到的脚本文件
-    template: 项目模板文件
-    egretProperties.json
-    index.html 
-    manifest.json 
-    tsconfig.json: ts编译配置文件
-
-
-
-
-
-
-
-
-
-
-要解决的：
-语法点
-arguments.callee 
-!!
-egret生态运用
-每日更新github 
-对象所有公共属性api
-
-将要做的egret项目放到github上
-
-沙发
-app小王子  社区管理员 | 2020-9-9 09:56:01
-egret run -port 端口号8061
-sass 
-
-
 
 
 删除使用 EventTarget.addEventListener() 方法添加的事件, 返回值undefined
@@ -313,16 +180,6 @@ RES相关都在这里
 切换应用前后台
 
 
-
-
-
-
-
-
-
-
-
-
 EUI部分
 
 UILayer: 容器
@@ -330,8 +187,6 @@ Label
 UIEvent
 Group 自动布局的容器基类
 Scroller 显示一个称为视域的单个可滚动
-
-
 
 
 // old ts version 
@@ -342,8 +197,6 @@ Scroller 显示一个称为视域的单个可滚动
 2.安装
 // 安装失败的话请以管理员身份运行，此处是sudo命令是mac上管理员权限
 sudo npm install typescript -g
-
-
 
 3.其他命令
 版本: tsc -v 
@@ -390,14 +243,9 @@ console.log(c);    // 输出 2
   console.log(x[0]);    // 输出 Runoob
 
 
-
-
-
 7. ts元组
 元组中允许存储不同类型的元素，元组可以作为参数传递给函数。
 var mytuple = [10,"Runoob"]; // 创建元组
-
-
 
 
 
@@ -415,7 +263,6 @@ var customer:IPerson = {
     lastName:"Hanks", 
     sayHi: ():string =>{return "Hi there"} 
 } 
-
 
 
 10. TS类  
@@ -641,9 +488,52 @@ var str2:number = <number> <any> str   //str、str2 是 string 类型
   o.y !== undefined   // false 
   o.toString !== undefined    // true: o继承了toString属性
 
+// about offical accounts
+
+export function jsSdkConfig(axios, host) {
+  let u = window.navigator.userAgent;
+  let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  //安卓需要使用当前URL进行微信API注册（即当场调用location.href.split('#')[0]）
+  //iOS需要使用进入页面的初始URL进行注册，（即在任何pushstate发生前，调用location.href.split('#')[0]）
+  let url = '';
+  if (isiOS) {
+      url = encodeURIComponent(`http://www.qq.com/home/index?op=${window.sessionStorage.getItem('option')}`);//获取初始化的url相关参数
+  } else {
+      url = encodeURIComponent(window.location.href.split('#')[0]);
+  }
+
+  let time = Math.round(new Date().getTime() / 1000); //获取10位时间戳
+  // alert(window.location.href.split('#')[0]);
+  axios.get(`${host}/wechat/getJsSDKConfig?timestamp=${time}&nonceStr=nonceStr&url=${url}`).then(function (response) {
+      if (response.data.state === 0) {
+          /*配置微信jssdk*/
+          window.wx.config({
+              debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+              appId: response.data.data.appId, // 必填，企业号的唯一标识，此处填写企业号corpid
+              timestamp: response.data.data.timestamp, // 必填，生成签名的时间戳（10位）
+              nonceStr: response.data.data.nonceStr, // 必填，生成签名的随机串,注意大小写
+              signature: response.data.data.signature,// 必填，签名，见附录1（通过https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign 验证）
+              jsApiList: [
+                  'getLocation',
+                  'onMenuShareTimeline',
+                  'onMenuShareAppMessage'
+              ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+          });
+      }
+  }).catch(function (errors) {
+      console.log('errors', errors);
+  });
+}
+
+// professtional
 
 
-3. 
+
+
+
+
+
 
 
 
