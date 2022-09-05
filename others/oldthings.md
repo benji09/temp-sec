@@ -526,7 +526,14 @@ export function jsSdkConfig(axios, host) {
   });
 }
 
-// professtional
+5. vue3 review
+eco 
+  PrimeVue(ui libary, good?)
+  vite(remember forbidden vetur on vscode)
+
+
+
+
 
 
 
