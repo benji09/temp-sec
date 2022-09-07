@@ -529,8 +529,8 @@ export function jsSdkConfig(axios, host) {
 5. vue3 review
 eco 
   PrimeVue(ui libary, good?)
-  vite(remember forbidden vetur on vscode)
-
+  vite(remember forbidden vetur on vscode)  
+  esbuild way better than webpack, if it compares vite?
 
 
 
