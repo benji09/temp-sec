@@ -526,12 +526,85 @@ export function jsSdkConfig(axios, host) {
   });
 }
 
+
+
 5. vue3 review
 eco 
   PrimeVue(ui libary, good?)
   vite(remember forbidden vetur on vscode)  
-  esbuild way better than webpack, if it compares vite?
+  esbuild way better than webpack, if it compares to vite?
 
+
+
+1. intro
+    由 Python 编写的一个Web 应用框架。
+    基于MVC 模型，即 Model（模型）+ View（视图）+ Controller（控制器）设计模式
+    Python + Django ：快速开发、设计、部署网站。
+
+
+2. 特点：
+    强大的数据库功能
+    自带强大的后台功能
+    优雅的网址
+
+3. MTV 模型
+    本质上和 MVC 是一样的，也是为了各组件间保持松耦合关系
+        M 表示模型（Model）
+        T 表示模板 (Template)
+        V 表示视图（View）
+        还需要一个 URL 分发器，它的作用是将一个个 URL 的页面请求分发给不同的 View 处理，View 再调用相应的 Model 和 Template。
+
+4. install: 
+    phthon 3.10
+    self: 哪个版本的Python来配合Django要注意
+    $ sudo python3 setup.py install //python3别忘加3
+    ?? Could not find suitable distribution for Requirement.parse('sqlparse>=0.2.2')
+
+    
+
+5. python: 
+    退出： exit()
+    python --version(mac自带2)
+    python3 --version
+    安装pip,python get-pip.py, 3版本用'python3' => pip-22.2.2 wheel-0.37.1
+    $ django-admin startproject testdj  // django-admin 'testdj'
+
+    
+    安装sqlparse, if 'ERROR: Could not find a version that satisfies the requirement sqlparse (from versions: none)'
+    See, https://blog.csdn.net/jined/article/details/124774570, 国内pip源。
+
+    python3 manage.py runserver //启动服务器
+
+    manage.py: 一个实用的命令行工具
+
+6. 替换废弃
+    from django.urls import re_path as url
+    'DIRS': [Path(BASE_DIR, 'templates')],
+
+
+7. form
+    如果不用 {% csrf_token %}(跨站请求伪造保护。) 标签，在用 form 表单时，页面会报 403.
+
+8. {% block %} 标签: 子模板可以重载这些部分
+
+9. Django 对各种数据库提供了很好的支持
+   self: 其它主流数据库？统计
+
+10. Django ORM (对象关系映射)
+    // 自带，用于不同类型系统的数据之间的转换
+    python代码 ->  ORM（桥梁）<-   数据库
+
+11. 模型
+    创建app
+    多种方式获取数据库的内容
+
+12. 
+    // 路由分发(include)
+    // 反向解析：模板中的超链接/视图中的重定向(视图层和模板层动态反向解析出更改后的 url)
+    // Namespace
+    // 用户认证（Auth）组件
+    // 中间件：介于 HttpRequest 与 HttpResponse 处理之间的一道处理过程：修改请求、响应
+    // FBV(function base views) CBV (class base views):视图 函数、类处理请求
 
 
 
